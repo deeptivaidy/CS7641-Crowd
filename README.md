@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+# CS7641 Crowd Detection and Crowd Counting Project Page
 
 You can use the [editor on GitHub](https://github.com/haigeandychen/CS7641-Crowd/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
