@@ -15,9 +15,9 @@
 
 ## -------Feature Extractor-------
 def feature_extractor(img, r):
-    """ img: w x h x 3
+    """ img: h x w x 3
        r: m dimensional vector
-       feature_mat: w x h x 3m
+       feature_mat: h x w x 3m
     """
     
     ## Convert to HSV 
