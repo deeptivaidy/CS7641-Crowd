@@ -16,7 +16,7 @@ plt.imshow(rgb_img)
 # feature_mat: h x w x n
 # n: number of features per pixel (depends on number of window size r)
 # e.g. r = range(1,50)
-r = np.array([1]) #np.arange(10,60,10)
+r = np.array([1,5]) #np.arange(10,60,10)
 feature_mat = feature_extractor(rgb_img, r)
 
 ## -------CLustering-------
