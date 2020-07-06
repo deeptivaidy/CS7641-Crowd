@@ -12,8 +12,9 @@ import time
 save_dir = "results/"
 data_dir = "test_img/selected_test_img/"
 
-# image name
+# image number
 img_no = 52
+
 
 ## -------Load Image-------
 # img: h x w x 3
@@ -40,7 +41,7 @@ kmeans = KMeans(n_clusters=2, random_state=0).fit(input_data)
 labels = kmeans.labels_
 cluster_map = np.reshape(labels, (a,b))
 t1 = time.time()
-print("K-Means finished, used {} sec".format(round(t1-t0, 2)))
+print("K-Means finished, used {} sec.".format(round(t1-t0, 2)))
 
 
 ## -------Plotting resulting image-------

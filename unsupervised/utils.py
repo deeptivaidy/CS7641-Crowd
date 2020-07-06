@@ -7,7 +7,7 @@ import time
 from skimage import data, exposure
 
 ## -------Extract feature 1 (LoG)-------
-# feature1: h x w 
+# feature1: h x w
 def rad2complex(I):
     I_tilde = np.exp(1j*I)
     return I_tilde
@@ -21,20 +21,20 @@ def wrap_index(U,V,w,h):
     v = V
     if U>=h:
         u= U-h
-        
+
     if V>=w:
         v = V-w
-        
+
     return u,v
 
 def LoG_I(Ih_tilde, Is, r, alpha):
     w = Is.shape[1]
     h = Is.shape[0]
-    
+
     I_gauss_r = ndimage.gaussian_filter(np.real(Ih_tilde), sigma=1/3)
     I_gauss_i = ndimage.gaussian_filter(np.imag(Ih_tilde), sigma=1/3)
     I_gauss = I_gauss_r + 1j*I_gauss_i
-    
+
     LoGI = np.zeros((h,w))
     for u in range(h):
         for v in range(w):
@@ -43,9 +43,9 @@ def LoG_I(Ih_tilde, Is, r, alpha):
                 for V in range(v-r, v+r+1):
                     U_wrap,V_wrap = wrap_index(U,V,w,h)
                     s = s + angular_diff(np.angle(I_gauss[U_wrap,V_wrap]), np.angle(I_gauss[u,v])) * (Is[u,v] * Is[U_wrap,V_wrap])**alpha
-                    
+
             LoGI[u,v] = s
-            
+
     return LoGI
 
 def extract_feat1(Ih, Is, r):
@@ -53,7 +53,7 @@ def extract_feat1(Ih, Is, r):
     Ih_tilde = rad2complex(Ih)
     LoGI = LoG_I(Ih_tilde, Is, r, alpha)
     feat = ndimage.gaussian_filter(LoGI, sigma=r/3)
-    
+
     return feat
 
 ## -------Extract feature 2 (Entropy)-------
@@ -134,51 +134,51 @@ def feature_extractor(img, r):
         h = img.shape[0]
         w = img.shape[1]
 
-        ## Convert to HSV 
+        ## Convert to HSV
         # img_HSV: h x w x 3
         hsv_img = rgb2hsv(img)
 
         hue_img = hsv_img[:, :, 0]
         sat_img = hsv_img[:, :, 1]
         value_img = hsv_img[:, :, 2]
-        
+
         feature1 = np.zeros((h,w,m))
         feature2 = np.zeros((h,w,m))
         feature3 = np.zeros((h,w,m))
-        
+
         feature_mat = []
 
         for i in range(np.size(r)):
             t_start = time.time()
-            print('Computing multi-resolution feature, r =', r[i])
+            print('Computing multi-resolution feature, r =', r[i], ".")
 
             t0 = time.time()
             feature1[:,:,i] = extract_feat1(hue_img, sat_img, r[i])
             t1 = time.time()
-            print("Feature 1 completed,  used {} sec".format(round(t1-t0, 2)))
+            print("Feature 1 completed,  used {} sec.".format(round(t1-t0, 2)))
 
             t0 = time.time()
             feature2[:,:,i] = extract_feat2(sat_img, hue_img, r[i], N=3)
             t1 = time.time()
-            print("Feature 2 completed,  used {} sec".format(round(t1-t0, 2)))
+            print("Feature 2 completed,  used {} sec.".format(round(t1-t0, 2)))
 
             t0 = time.time()
             feature3[:,:,i] = extract_feat3(value_img, r[i])
             t1 = time.time()
-            print("Feature 3 completed,  used {} sec".format(round(t1-t0, 2)))
+            print("Feature 3 completed,  used {} sec.".format(round(t1-t0, 2)))
 
             t_end = time.time()
-            print('Multi-resolution feature extracted, r =', r[i], ", used {} sec".format(round(t_end - t_start, 2)))
+            print('Multi-resolution feature extracted, r =', r[i], ", used {} sec.".format(round(t_end - t_start, 2)))
 
         feature_mat = np.concatenate((feature1, feature2, feature3), axis=2)
 
         return feature_mat
-    
-    
-    
-## -------Clustering-------    
+
+
+
+## -------Clustering-------
 # cluster_map: h x w (only contains 0 or 1; 0 for background; 1 for crowd)
 
-# cluster_map = kmeans(feature_mat, k=2)   
-    
-    
+# cluster_map = kmeans(feature_mat, k=2)
+
+
