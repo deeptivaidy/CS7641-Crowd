@@ -3,6 +3,7 @@ import numpy as np
 from skimage.color import rgb2hsv
 from scipy import ndimage, misc
 from skimage.feature import hog
+import time
 from skimage import data, exposure
 
 ## -------Extract feature 1 (LoG)-------
@@ -122,7 +123,8 @@ def extract_feat3(Iv,r):
                    res[i:h,j:w] = temp
     return res
 
-## -------Feature Extractor-------
+
+# -------Feature Extractor-------
 def feature_extractor(img, r):
         """ img: h x w x 3
            r: m dimensional vector
@@ -147,14 +149,27 @@ def feature_extractor(img, r):
         feature_mat = []
 
         for i in range(np.size(r)):
-            print('r =',r[i])
-            
+            t_start = time.time()
+            print('Computing multi-resolution feature, r =', r[i])
+
+            t0 = time.time()
             feature1[:,:,i] = extract_feat1(hue_img, sat_img, r[i])
-            
-            feature2[:,:,i] = extract_feat2(sat_img, hue_img,r[i],N=3)
-            
-            feature3[:,:,i] = extract_feat3(value_img,r[i])
-            
+            t1 = time.time()
+            print("Feature 1 completed,  used {} sec".format(round(t1-t0, 2)))
+
+            t0 = time.time()
+            feature2[:,:,i] = extract_feat2(sat_img, hue_img, r[i], N=3)
+            t1 = time.time()
+            print("Feature 2 completed,  used {} sec".format(round(t1-t0, 2)))
+
+            t0 = time.time()
+            feature3[:,:,i] = extract_feat3(value_img, r[i])
+            t1 = time.time()
+            print("Feature 3 completed,  used {} sec".format(round(t1-t0, 2)))
+
+            t_end = time.time()
+            print('Multi-resolution feature extracted, r =', r[i], ", used {} sec".format(round(t_end - t_start, 2)))
+
         feature_mat = np.concatenate((feature1, feature2, feature3), axis=2)
 
         return feature_mat
