@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pickle
 from skimage import data,io
+from skimage.transform import rescale, downscale_local_mean
 from sklearn.cluster import KMeans
 from utils import feature_extractor
 import os
@@ -15,13 +16,22 @@ data_dir = "test_img/selected_test_img/"
 # image number
 img_no = 52
 
+# image downscale factor
+ds_factor = 2
+
 
 ## -------Load Image-------
 # img: h x w x 3
 # skimage.io.imread
 img_dir = os.path.join(data_dir, "IMG_{}.jpg".format(img_no))
-rgb_img = io.imread(img_dir)
-plt.imshow(rgb_img)
+rgb_img_original = io.imread(img_dir)
+# plt.imshow(rgb_img_original)
+# plt.show()
+
+# Downscale image to save computation time
+rgb_img = downscale_local_mean(rgb_img_original, (ds_factor, ds_factor, 1))
+# plt.imshow(rgb_img.astype(np.uint8))
+# plt.show()
 
 ## -------Extract Features-------
 # feature_mat: h x w x n
