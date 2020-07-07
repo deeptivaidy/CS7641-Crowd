@@ -37,7 +37,7 @@ rgb_img = downscale_local_mean(rgb_img_original, (ds_factor, ds_factor, 1))
 # feature_mat: h x w x n
 # n: number of features per pixel (depends on number of window size r)
 # e.g. r = range(1,50)
-r = np.array([1, 2, 3])
+r = np.array([1, 3, 5])
 # r = np.arange(1, 15, 5)   ##### Window size
 feature_mat = feature_extractor(rgb_img, r)
 
