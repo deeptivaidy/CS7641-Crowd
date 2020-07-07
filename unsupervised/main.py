@@ -17,7 +17,7 @@ data_dir = "test_img/selected_test_img/"
 img_no = 52
 
 # image downscale factor
-ds_factor = 2
+ds_factor = 1
 
 
 ## -------Load Image-------
@@ -37,8 +37,8 @@ rgb_img = downscale_local_mean(rgb_img_original, (ds_factor, ds_factor, 1))
 # feature_mat: h x w x n
 # n: number of features per pixel (depends on number of window size r)
 # e.g. r = range(1,50)
-r = np.array([1])
-# r = np.arange(10, 60, 10)   ##### Window size
+r = np.array([1, 2, 3])
+# r = np.arange(1, 15, 5)   ##### Window size
 feature_mat = feature_extractor(rgb_img, r)
 
 ## -------CLustering-------
@@ -50,6 +50,7 @@ t0 = time.time()
 kmeans = KMeans(n_clusters=2, random_state=0).fit(input_data)
 labels = kmeans.labels_
 cluster_map = np.reshape(labels, (a,b))
+cluster_map = 1 - cluster_map
 t1 = time.time()
 print("K-Means finished, used {} sec.".format(round(t1-t0, 2)))
 
@@ -61,7 +62,7 @@ pickle.dump([kmeans, cluster_map], f)
 f.close()
 
 plot_dir = os.path.join(save_dir, "IMG_{}_kmeans.jpg".format(img_no))
-plt.imshow(cluster_map)
+plt.imshow(cluster_map, cmap="gray", vmin=0, vmax=1)
 plt.savefig(plot_dir)
 plt.show()
 
