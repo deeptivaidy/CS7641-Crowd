@@ -73,9 +73,13 @@ def extract_feat1(Ih, Is, r):
 ```
 
 ## Entropy
+The entropy is computed via 
+
 <img src="https://render.githubusercontent.com/render/math?math=f_{u,v}^{2,r_j} = \Big( - \sum_{k=0}^{b} \frac{G_{\sigma_j}*B_k \otimes \log_2 \big(G_{\sigma_j * B_k} \big)}{\log_2(N)}\Big) \otimes \big( G_{\gamma_j} * I_s \big)^\beta (u,v)">,
+
 where <img src="https://render.githubusercontent.com/render/math?math=B_k"> is the binary image corresponding to the <img src="https://render.githubusercontent.com/render/math?math=k">-th bin of the histogram of <img src="https://render.githubusercontent.com/render/math?math=b"> bins used to compute the entropy. 
 We used <img src="https://render.githubusercontent.com/render/math?math=b=10"> in our algorithm. 
+
 ``` python
 def B_k(b, k, Ih, u, v):
     if (2 * k * np.pi) / b <= Ih[u, v] < (2 * (k+1) * np.pi) / b:
