@@ -15,7 +15,7 @@ Then pixels are labeled as crowd or background using K-means clustering.
 
 We use the following picture as an example to demonstrate the feature extraction.
 
-<img align="center" src="results/input example.png" width="700" alt>
+<img align="center" src="results/input example.jpg" width="700" alt>
 
 We first convert the rbg image to the HSV color space. 
 <img align="center" src="results/HSV_example.png" width="700" alt>
