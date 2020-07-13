@@ -152,13 +152,13 @@ We plan to train and test the algorithms on some of the free-view crowd-counting
 
 |Original | Density Map | Crowd Detection |
 | --- | --- | --- |
-| <img src="results/images/IMG_66.jpg" width="300"> | <img src="results/density_maps/output_IMG_66.png" width="300"> | <img src="/results/k-means/no_border_IMG_66_kmeans_r=[1 2].jpg" width="300"> |
-| <img src="/results/images/IMG_14.jpg" width="300"> | <img src="/results/density_maps/output_IMG_14.png" width="300"> | <img src="/results/k-means/no_border_IMG_14_kmeans_r=[1 2].jpg" width="300"> |
-| <img src="/results/images/IMG_2.jpg" width="300"> | <img src="/results/density_maps/output_IMG_2.png" width="300"> | <img src="/results/k-means/no_border_IMG_2_kmeans_r=[1 2].jpg" width="300"> |
-| <img src="/results/images/IMG_49.jpg" width="300"> | <img src="/results/density_maps/output_IMG_49.png" width="300"> | <img src="/results/k-means/no_border_IMG_49_kmeans_r=[1 2].jpg" width="300"> |
-| <img src="/results/images/IMG_46.jpg" width="300"> | <img src="/results/density_maps/output_IMG_46.png" width="300"> | <img src="/results/k-means/no_border_IMG_46_kmeans_r=[1 2].jpg" width="300"> |
-| <img src="/results/images/IMG_42.jpg" width="300"> | <img src="/results/density_maps/output_IMG_42.png" width="300"> | <img src="/results/k-means/no_border_IMG_42_kmeans_r=[1 2].jpg" width="300"> |
-| <img src="/results/images/IMG_19.jpg" width="300"> | <img src="/results/density_maps/output_IMG_19.png" width="300"> | <img src="/results/k-means/no_border_IMG_19_kmeans_r=[1 2].jpg" width="300"> |
+| <img src="results/images/IMG_66.jpg" width="300"> | <img src="results/density_maps/output_IMG_66.png" width="300"> | <img src="results/k-means/no_border_IMG_66_kmeans_r=[1 2].jpg" width="300"> |
+| <img src="results/images/IMG_14.jpg" width="300"> | <img src="results/density_maps/output_IMG_14.png" width="300"> | <img src="results/k-means/no_border_IMG_14_kmeans_r=[1 2].jpg" width="300"> |
+| <img src="results/images/IMG_2.jpg" width="300"> | <img src="results/density_maps/output_IMG_2.png" width="300"> | <img src="results/k-means/no_border_IMG_2_kmeans_r=[1 2].jpg" width="300"> |
+| <img src="results/images/IMG_49.jpg" width="300"> | <img src="results/density_maps/output_IMG_49.png" width="300"> | <img src="results/k-means/no_border_IMG_49_kmeans_r=[1 2].jpg" width="300"> |
+| <img src="results/images/IMG_46.jpg" width="300"> | <img src="results/density_maps/output_IMG_46.png" width="300"> | <img src="results/k-means/no_border_IMG_46_kmeans_r=[1 2].jpg" width="300"> |
+| <img src="results/images/IMG_42.jpg" width="300"> | <img src="results/density_maps/output_IMG_42.png" width="300"> | <img src="results/k-means/no_border_IMG_42_kmeans_r=[1 2].jpg" width="300"> |
+| <img src="results/images/IMG_19.jpg" width="300"> | <img src="results/density_maps/output_IMG_19.png" width="300"> | <img src="results/k-means/no_border_IMG_19_kmeans_r=[1 2].jpg" width="300"> |
 
 ## Conclusion
 
