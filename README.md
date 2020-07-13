@@ -117,7 +117,7 @@ def extract_feat2(Is, Ih, r, N=3):
 ```
 
 ## HOG
-# There are 4 steps of HOG implementation, including:
+### There are 4 steps of HOG implementation, including:
 1. Preprocessing 
    Resize the target picture to spesific size like: 100×200, 128×256, or 1000×2000.
 1. Calculate the Gradient Images
