@@ -116,7 +116,7 @@ def extract_feat2(Is, Ih, r, N=3):
     return feat
 ```
 
--HOG
+## HOG
 ``` python
 def extract_feat3(Iv,r):
     #we change the pixel per cell from 1*1 to 16*16 based on Dalal and triggs
