@@ -15,7 +15,7 @@ Then pixels are labeled as crowd or background using K-means clustering.
 
 We use the following picture as an example to demonstrate the feature extraction.
 
-<img align="center" src="results/Structure.png" width="700" alt>
+<img align="center" src="results/input example.png" width="700" alt>
 
 We first convert the rbg image to the HSV color space. 
 <img align="center" src="results/HSV_example.png" width="700" alt>
@@ -81,7 +81,7 @@ def extract_feat1(Ih, Is, r):
 ```
 We present a sample output after the LoG feature extraction.
 
-<img align="center" src="results/efature 1.png" width="700" alt>
+<img align="center" src="results/feature 1.png" width="700" alt>
 
 
 ## Entropy
@@ -129,7 +129,7 @@ def extract_feat2(Is, Ih, r, N=3):
 ```
 We present a sample output after the Entropy feature extraction.
 
-<img align="center" src="results/efature 2.png" width="700" alt>
+<img align="center" src="results/feature 2.png" width="700" alt>
 
 ## HOG
 ### There are 4 steps of HOG implementation, including:
