@@ -143,9 +143,10 @@ def extract_feat3(Iv,r):
 
 
 ### Crowd counting (Supervised learning)
-We plan to implement the crowd counting algorithm in [4], which utilizes multi-resolution and multi-column networks. The work [4] also applies an attention mechanism to guide the network to focus on certain appropriate global and local scales. More specifically, the input image is first fed into a feature extraction network adopted from VGG16. Then the feature map goes through two parallel paths, where one path of the network identifies the crowd head locations and the other path computes a density feature map. Finally, these two maps are fused to produce the final density map and crowd count. 
+We plan to implement the crowd counting algorithm in [4], which utilizes multi-resolution and multi-column networks structure as in Figure 4. The work [4] also applies an attention mechanism to guide the network to focus on certain appropriate global and local scales. More specifically, the input image is first fed into a feature extraction network adopted from VGG16. Then the feature map goes through two parallel paths, where one path of the network identifies the crowd head locations and the other path computes a density feature map. Finally, these two maps are fused to produce the final density map and crowd count. 
 
-We plan to train and test the algorithms on some of the free-view crowd-counting data sets, including ShanghaiTech, NWPU-Crowd, UCF-QNRF, JHU-CROWD++, etc. 
+We plan to train and test the algorithms on the ShanghaiTech data set, one of the free-view crowd-counting data sets. 
+<img src="results/images/structure.png" width="300">
 
 
 ## Results
@@ -169,9 +170,7 @@ We plan to train and test the algorithms on some of the free-view crowd-counting
 
 [3] A. Fagette, N. Courty, D. Racoceanu, and J.-Y. Dufour,  “Unsupervised dense    crowd    detection    by    multiscale    texture    analysis,” Pattern Recognition Letters, vol. 44, pp. 126 – 133, 2014, pattern Recognition and   Crowd   Analysis. 
 
-[4] L. Zhu, Z.Zhao, C. Lu, Y. Lin, Y. Peng and T. Yao, “Dual path multi-scale fusion networks with attention for crowd counting”. 2019. arXiv preprint arXiv:1902.01115.
-
-
+[4] Y. Zhang, D. Zhou, S. Chen, S. Gao, and Y. Ma, "Single-image crowd counting via multi-column convolutional neural network," In Proceedings of the IEEE conference on computer vision and pattern recognition, pp. 589-597. 2016.
 
 
 
