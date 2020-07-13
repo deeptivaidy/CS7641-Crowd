@@ -121,7 +121,7 @@ def extract_feat2(Is, Ih, r, N=3):
 1. Preprocessing <br/>
    Transfer the target picture to spesific size such as: 100×200, 128×256, or 1000×2000.
 1. Calculate the Gradient Images <br/>
-   It is easy to achieve filtering the image using several kernals. In this project, we use Sobel kernal.
+   It is easy to filter the image using several kernals. In this project, we use Sobel kernal.
 1. Calculate Histogram of gradients in 16×16 cells. 
 1. 16×16 Block Normalization <br/>
    Normalize the histogram so they are not affected by lighting variations.
