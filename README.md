@@ -118,9 +118,9 @@ def extract_feat2(Is, Ih, r, N=3):
 
 ## HOG
 ### There are 4 steps of HOG implementation, including:
-1. Preprocessing 
+1. Preprocessing \n
    Resize the target picture to spesific size like: 100×200, 128×256, or 1000×2000.
-1. Calculate the Gradient Images
+1. Calculate the Gradient Images \\
    It is easy to achieve filtering the image using several kernals. In this project, we use Sobel kernal.
 1. Calculate Histogram of gradients in 16×16 cells.
 1. 16×16 Block Normalization
