@@ -11,7 +11,7 @@ Previous works have investigated using supervised learning and unsupervised lear
 The crowd detection analyzes the crowd distribution in a scene. A binary classification is conducted to differentiate the crowds from background noises in the picture, such as trees and buildings. We envision an algorithm that contains two modules as in [3]: feature extraction and unsupervised classification. We plan to extract the feature vector at each pixel of the image via Laplacian of Gaussian (LoG), the entropy, and the Histogram of Oriented Gradients (HOG) [3]. Then pixels are labeled as crowd or background using an unsupervised method (e.g. K-means). We expect the algorithm to output a crowd distribution as in Figure 3 in [3].
 
 #### Laplacian of Gaussian
-We use a custom LoG filter on the HSV image. Define the hue, satuaration and value image to be <img src="https://render.githubusercontent.com/render/math?math=I_h(u,v), I_s(u,v), I_v(u,v)">. Since $I_h$ has units in radian, we convert the angle value to complex number: <img src="https://render.githubusercontent.com/render/math?math=\tilde{I}_h(u,v) = exp(i \cdot I_h(u,v))">
+We use a custom LoG filter on the HSV image. Define the hue, satuaration and value image to be <img src="https://render.githubusercontent.com/render/math?math=I_h(u,v), I_s(u,v), I_v(u,v)">. Since <img src="https://render.githubusercontent.com/render/math?math=I_h"> has units in radian, we convert the angle value to complex number: <img src="https://render.githubusercontent.com/render/math?math=\tilde{I}_h(u,v) = exp(i \cdot I_h(u,v))">
 
 <img src="https://render.githubusercontent.com/render/math?math=f_{u,v}^{1,r_j} = (G_{\sigma_j}*LoG)(u,v)">
 
