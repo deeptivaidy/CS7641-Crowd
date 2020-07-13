@@ -72,7 +72,7 @@ def extract_feat1(Ih, Is, r):
     return feat
 ```
 
-## Entropy
+#### Entropy
 The entropy is computed via 
 
 <img src="https://render.githubusercontent.com/render/math?math=f_{u,v}^{2,r_j} = \Big( - \sum_{k=0}^{b} \frac{G_{\sigma_j}*B_k \otimes \log_2 \big(G_{\sigma_j * B_k} \big)}{\log_2(N)}\Big) \otimes \big( G_{\gamma_j} * I_s \big)^\beta (u,v)">,
@@ -116,8 +116,8 @@ def extract_feat2(Is, Ih, r, N=3):
     return feat
 ```
 
-## HOG
-### There are 4 steps of HOG implementation, including:
+#### HOG
+#### There are 4 steps of HOG implementation, including:
 1. Preprocessing <br/>
    Transfer the target picture to spesific size such as: 100×200, 128×256, or 1000×2000.
 1. Calculate the Gradient Images <br/>
