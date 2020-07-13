@@ -13,6 +13,14 @@ The crowd detection analyzes the crowd distribution in a scene. A binary classif
 <img src="https://render.githubusercontent.com/render/math?math=f_{u,v} = \begin{pmatrix}f_{u,v}^{1,r_1}\\...\\f_{u,v}^{1,r_m}\\f_{u,v}^{2,r_1}\\...\\f_{u,v}^{2,r_m}\\f_{u,v}^{3,r_1}\\...\\f_{u,v}^{3,r_m}\end{pmatrix}"> 
 Then pixels are labeled as crowd or background using K-means clustering.
 
+We use the following picture as an example to demonstrate the feature extraction.
+
+<img align="center" src="results/Structure.png" width="700" alt>
+
+We first convert the rbg image to the HSV color space. 
+<img align="center" src="results/HSV_example.png" width="700" alt>
+
+
 #### Laplacian of Gaussian
 We use a custom LoG filter on the HSV image. Define the hue, satuaration and value image to be <img src="https://render.githubusercontent.com/render/math?math=I_h(u,v), I_s(u,v), I_v(u,v)">. Since <img src="https://render.githubusercontent.com/render/math?math=I_h"> has units in radian, we convert the angle value to complex number: <img src="https://render.githubusercontent.com/render/math?math=\tilde{I}_h(u,v) = exp(i \cdot I_h(u,v))">
 
@@ -71,8 +79,12 @@ def extract_feat1(Ih, Is, r):
     
     return feat
 ```
+We present a sample output after the LoG feature extraction.
 
-#### Entropy
+<img align="center" src="results/efature 1.png" width="700" alt>
+
+
+## Entropy
 The entropy is computed via 
 
 <img src="https://render.githubusercontent.com/render/math?math=f_{u,v}^{2,r_j} = \Big( - \sum_{k=0}^{b} \frac{G_{\sigma_j}*B_k \otimes \log_2 \big(G_{\sigma_j * B_k} \big)}{\log_2(N)}\Big) \otimes \big( G_{\gamma_j} * I_s \big)^\beta (u,v)">,
@@ -115,9 +127,12 @@ def extract_feat2(Is, Ih, r, N=3):
 
     return feat
 ```
+We present a sample output after the Entropy feature extraction.
 
-#### HOG
-#### There are 4 steps of HOG implementation, including:
+<img align="center" src="results/efature 2.png" width="700" alt>
+
+## HOG
+### There are 4 steps of HOG implementation, including:
 1. Preprocessing <br/>
    Transfer the target picture to spesific size such as: 100×200, 128×256, or 1000×2000.
 1. Calculate the Gradient Images <br/>
