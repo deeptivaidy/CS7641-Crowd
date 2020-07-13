@@ -147,10 +147,8 @@ Traditional crowd counting algorithms performs poorly when perspective distoriti
 The recent multi-column convolutional neural network (MCNN) aims to address the perspective distortions via the multi-column architecture. 
 We implemented one of those MCNN algorithms as in [4], whose multi-resolution and multi-column structure is shown in Figure 4. 
 
-<p>
-    <img align="center" src="results/Structure.png" width="700" alt>
-    <em>The structure of the proposed multi-column convolutional neural network for crowd density map estimation.</em>
-</p>
+<img align="center" src="results/Structure.png" width="700" alt>
+
 
 For this MCNN, the input is the image and its output is a crowd density map, whose integral gives the overall crowd count. 
 Different columns of this MCNN corresponds to filters with receptive fields of different sizes, so that the features learnt by each column CNN is adaptive to large variation in people/head size due to perspective effects. 
@@ -162,10 +160,8 @@ With the limited computation resource, we reduced the architecture to 3 columns 
 ## Results
 
 The following figure presents the training curves of the MCNN algorithm after 2000 episodes.
-<p>
-    <img align="center" src="results/Training Curves.png" width="700" alt>
-    <em>The training curves of the MCNN.</em>
-</p>
+<img align="center" src="results/Training Curves.png" width="700" alt>
+
 
 
 |Original | Density Map | Crowd Detection |
