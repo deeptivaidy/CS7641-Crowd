@@ -172,7 +172,7 @@ The following figure presents the training curves of the MCNN algorithm after 20
 
 
 |Original | Ground Truth | Density Map | Crowd Detection |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | <img src="results/images/IMG_66.jpg" width="300"> | <img src="results/density_maps/gt_IMG_66.png" width="300"> |<img src="results/density_maps/output_IMG_66.png" width="300"> | <img src="results/k-means/no_border_IMG_66_kmeans_r=[1 2].jpg" width="300"> |
 | <img src="results/images/IMG_14.jpg" width="300"> | <img src="results/density_maps/gt_IMG_14.png" width="300"> |<img src="results/density_maps/output_IMG_14.png" width="300"> | <img src="results/k-means/no_border_IMG_14_kmeans_r=[1 2].jpg" width="300"> |
 | <img src="results/images/IMG_2.jpg" width="300"> | <img src="results/density_maps/gt_IMG_2.png" width="300"> |<img src="results/density_maps/output_IMG_2.png" width="300"> | <img src="results/k-means/no_border_IMG_2_kmeans_r=[1 2].jpg" width="300"> |
