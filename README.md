@@ -72,8 +72,7 @@ def extract_feat1(Ih, Is, r):
     return feat
 ```
 
-<img src="https://render.githubusercontent.com/render/math?math=f_{u,v}^{2,r_j} = (-\sum_{k=0}^b\frac{G_{\sigma_j}*B_k \bigotimes \log_2(G_{\sigma_j}*B_k)}{\log_2(N)})\bigotimes {(G_{\sigma_j}*I_s)}^\beta (u,v)">
-
+-Entropy
 ``` python
 def B_k(b, k, Ih, u, v):
     if (2 * k * np.pi) / b <= Ih[u, v] < (2 * (k+1) * np.pi) / b:
@@ -110,8 +109,7 @@ def extract_feat2(Is, Ih, r, N=3):
     return feat
 ```
 
-#### Histogram of Oriented Gradients
-
+-HOG
 ``` python
 def extract_feat3(Iv,r):
     #we change the pixel per cell from 1*1 to 16*16 based on Dalal and triggs
@@ -145,13 +143,30 @@ def extract_feat3(Iv,r):
 
 
 ### Crowd counting (Supervised learning)
-We plan to implement the crowd counting algorithm in [4], which utilizes multi-resolution and multi-column networks structure as in Figure 4. The work [4] also applies an attention mechanism to guide the network to focus on certain appropriate global and local scales. More specifically, the input image is first fed into a feature extraction network adopted from VGG16. Then the feature map goes through two parallel paths, where one path of the network identifies the crowd head locations and the other path computes a density feature map. Finally, these two maps are fused to produce the final density map and crowd count. 
+Traditional crowd counting algorithms performs poorly when perspective distoritions occur.
+The recent multi-column convolutional neural network (MCNN) aims to address the perspective distortions via the multi-column architecture. 
+We implemented one of those MCNN algorithms as in [4], whose multi-resolution and multi-column structure is shown in Figure 4. 
 
-We plan to train and test the algorithms on the ShanghaiTech data set, one of the free-view crowd-counting data sets. 
-<img src="results/images/structure.png" width="300">
+<p>
+    <img src="results/Structure.png" alt>
+    <em>The structure of the proposed multi-column convolutional neural network for crowd density map estimation.</em>
+</p>
 
+For this MCNN, the input is the image and its output is a crowd density map, whose integral gives the overall crowd count. 
+Different columns of this MCNN corresponds to filters with receptive fields of different sizes, so that the features learnt by each column CNN is adaptive to large variation in people/head size due to perspective effects. 
+We implemented a MCNN containing three columns of covolutional neural networks whose filters have different sizes (large, medium and small).
+
+The MCNN algorithm was originally implemented in Python 2.7 using 5 columns. We updated the code and implemented the algorithm in Python 3.7 using PyTorch.
+With the limited computation resource, we reduced the architecture to 3 columns and trained the network using the ShanghaiTech data set A for 2000 episodes.
 
 ## Results
+
+The following figure presents the training curves of the MCNN algorithm after 2000 episodes.
+<p>
+    <img src="results/Training Curves.png" alt>
+    <em>The training curves of the MCNN.</em>
+</p>
+
 
 |Original | Density Map | Crowd Detection |
 | --- | --- | --- |
