@@ -72,7 +72,8 @@ def extract_feat1(Ih, Is, r):
     return feat
 ```
 
--Entropy
+<img src="https://render.githubusercontent.com/render/math?math=f_{u,v}^{2,r_j} = (-\sum_{k=0}^b\frac{G_{\sigma_j}*B_k \bigotimes \log_2(G_{\sigma_j}*B_k)}{\log_2(N)})\bigotimes {(G_{\sigma_j}*I_s)}^\beta (u,v)">
+
 ``` python
 def B_k(b, k, Ih, u, v):
     if (2 * k * np.pi) / b <= Ih[u, v] < (2 * (k+1) * np.pi) / b:
@@ -109,7 +110,8 @@ def extract_feat2(Is, Ih, r, N=3):
     return feat
 ```
 
--HOG
+#### Histogram of Oriented Gradients
+
 ``` python
 def extract_feat3(Iv,r):
     #we change the pixel per cell from 1*1 to 16*16 based on Dalal and triggs
