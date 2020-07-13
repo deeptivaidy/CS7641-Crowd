@@ -148,7 +148,7 @@ The recent multi-column convolutional neural network (MCNN) aims to address the 
 We implemented one of those MCNN algorithms as in [4], whose multi-resolution and multi-column structure is shown in Figure 4. 
 
 <p>
-    <img src="results/Structure.png" width="700">
+    <img align="center" src="results/Structure.png" width="700" alt>
     <em>The structure of the proposed multi-column convolutional neural network for crowd density map estimation.</em>
 </p>
 
@@ -163,7 +163,7 @@ With the limited computation resource, we reduced the architecture to 3 columns 
 
 The following figure presents the training curves of the MCNN algorithm after 2000 episodes.
 <p>
-    <img src="results/Training Curves.png" width="700">
+    <img align="center" src="results/Training Curves.png" width="700" alt>
     <em>The training curves of the MCNN.</em>
 </p>
 
