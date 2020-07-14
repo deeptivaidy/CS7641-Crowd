@@ -21,7 +21,7 @@ We first convert the rbg image to the HSV color space.
 <img align="center" src="results/HSV_example.png" width="700" alt>
 
 
-#### Laplacian of Gaussian
+### Laplacian of Gaussian
 We use a custom LoG filter on the HSV image. Define the hue, satuaration and value image to be <img src="https://render.githubusercontent.com/render/math?math=I_h(u,v), I_s(u,v), I_v(u,v)">. Since <img src="https://render.githubusercontent.com/render/math?math=I_h"> has units in radian, we convert the angle value to complex number: <img src="https://render.githubusercontent.com/render/math?math=\tilde{I}_h(u,v) = exp(i \cdot I_h(u,v))">
 
 <img src="https://render.githubusercontent.com/render/math?math=f_{u,v}^{1,r_j} = (G_{\sigma_j}*LoG)(u,v)">
@@ -84,7 +84,7 @@ We present a sample output after the LoG feature extraction.
 <img align="center" src="results/feature 1.png" width="700" alt>
 
 
-## Entropy
+### Entropy
 Given the hue, satuaration and value image <img src="https://render.githubusercontent.com/render/math?math=I_h(u,v), I_s(u,v), I_v(u,v)">, 
 the entropy is computed via 
 
@@ -132,7 +132,7 @@ We present a sample output after the Entropy feature extraction below.
 
 <img align="center" src="results/feature 2.png" width="700" alt>
 
-## HOG
+### HOG
 ### There are 4 steps of HOG implementation, including:
 1. Preprocessing <br/>
    Transfer the target picture to spesific size such as: 100×200, 128×256, or 1000×2000.
