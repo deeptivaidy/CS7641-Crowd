@@ -216,7 +216,7 @@ The following are couple examplary outputs of images in the ShanghaiTech data se
 | <img src="results/images/IMG_19.jpg" width="250"> | <img src="results/density_maps/gt_IMG_19.png" width="250"> |<img src="results/density_maps/output_IMG_19.png" width="250"> | <img src="results/k-means/no_border_IMG_19_kmeans_r=[1 2].jpg" width="250"> | <img src="results/k-means/K-means(hsv)/IMG_19_kmeans(hsv).jpg" width="250"> |
 
 ### Discussion
-For the unsupervised learning portion, there are several hyperparameter of the algorithm. The window size r is the reception field when extracting the three features. Based on [3], the authors propose using a range of r from 1 to 50 with gap of 10. This is supposed to capture the texture information on different scales so that our algorithm can detect crowd with multiple resolutions. In our implemention, we realized that using a large window size severely increases time complexity. Therefore, we have chosen to use window size of 1 and 2 in our implementation.
+For the unsupervised learning portion, there are several hyperparameter of the algorithm. The window size <img src="https://render.githubusercontent.com/render/math?math=r"> is the reception field when extracting the three features. Based on [3], the authors propose using a range of <img src="https://render.githubusercontent.com/render/math?math=r"> from 1 to 50 with gap of 10. This is supposed to capture the texture information on different scales so that our algorithm can detect crowd with multiple resolutions. In our implemention, we realized that using a large window size severely increases time complexity. Therefore, we have chosen to use window size of 1 and 2 in our implementation.
 
 ## Conclusion
 
