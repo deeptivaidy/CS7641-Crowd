@@ -15,13 +15,13 @@ Then pixels are labeled as crowd or background using K-means clustering.
 
 We use the following picture of a Florida beach during the pandemic as an example to demonstrate the feature extraction.
 <p align="center">
-  <img src="results/images/IMG_100.jpg" width="700" \>
+  <img src="results/images/IMG_100.jpg" width="400" \>
 </p>
 
 
 We first convert the rbg image to the HSV color space. 
 <p align="center">
-    <img src="results/HSV_example.png" width="700" \>
+    <img src="results/HSV_example.png" width="900" \>
 <p>
 
 ### Laplacian of Gaussian
