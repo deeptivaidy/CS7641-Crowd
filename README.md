@@ -30,7 +30,7 @@ We use the following picture of a Florida beach [5] during the pandemic as an ex
 </p>
 
 
-We first convert the rbg image to the HSV color space. 
+We first convert the image from the RGB color space to the HSV color space. 
 <p align="center">
     <img src="results/HSV_example.png" width="900" \>
 <p>
