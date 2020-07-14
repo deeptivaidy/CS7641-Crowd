@@ -215,4 +215,4 @@ In this project, we have implemented unsupervised learning and supervised learni
 
 [4] Y. Zhang, D. Zhou, S. Chen, S. Gao, and Y. Ma, "Single-image crowd counting via multi-column convolutional neural network," In Proceedings of the IEEE conference on computer vision and pattern recognition, pp. 589-597. 2016.
 
-[5]
+[5] E. Fieldstadt, “Panama City Beach among Last in Florida to Close Beaches.” NBCNews.com, NBCUniversal News Group, 20 Mar. 2020, www.nbcnews.com/news/us-news/coronavirus-concerns-still-not-closing-some-florida-beaches-remain-open-n1164676.
