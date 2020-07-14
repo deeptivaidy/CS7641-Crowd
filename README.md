@@ -38,7 +38,7 @@ We first convert the image from the RGB color space to the HSV color space.
 <p align="center">
     <img src="results/HSV_example.png" width="900">
 </p>
-HSV model(Hue, Saturation and Volume) is much close to human's perception experience comparing to RGB model. When doing CV(computer vision) or image processing jobs, HSV is much popular.
+HSV model(Hue, Saturation and Volume) is much close to human's perception experience comparing to RGB model. When doing CV(computer vision) or image processing jobs, HSV is much more popular.
 
 ### Laplacian of Gaussian (LoG)
 We use a custom LoG filter on the HSV image. Define the hue, satuaration and value image to be <img src="https://render.githubusercontent.com/render/math?math=I_h(u,v), I_s(u,v), I_v(u,v)">. Since <img src="https://render.githubusercontent.com/render/math?math=I_h"> has units in radian, we convert the angle value to complex number: <img src="https://render.githubusercontent.com/render/math?math=\tilde{I}_h(u,v) = exp(i \cdot I_h(u,v))">
