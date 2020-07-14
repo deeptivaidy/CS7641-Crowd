@@ -134,7 +134,9 @@ def extract_feat2(Is, Ih, r, N=3):
 We present a sample output after the Entropy feature extraction below.
 <p align="center">
 <img src="results/feature 2.png" width="900" alt>
-<p>
+</p>
+
+
 ### HOG
 ### There are 4 steps of HOG implementation, including:
 1. Preprocessing <br/>
@@ -156,7 +158,7 @@ def extract_feat3(Iv,r):
 ```
 <p align="center">
 <img align="center" src="results/feature3.png" width="900" alt>
-<p>
+</p>
   
 ### Crowd counting (Supervised learning)
 Traditional crowd counting algorithms performs poorly when perspective distoritions occur.
