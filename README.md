@@ -15,7 +15,7 @@ Then pixels are labeled as crowd or background using K-means clustering.
 
 We use the following picture of a Florida beach during the pandemic as an example to demonstrate the feature extraction.
 
-<img align="center" src="results/IMG_100.jpg" width="700" alt>
+<img align="center" src="results/images/IMG_100.jpg" width="700" alt>
 
 We first convert the rbg image to the HSV color space. 
 <img align="center" src="results/HSV_example.png" width="700" alt>
