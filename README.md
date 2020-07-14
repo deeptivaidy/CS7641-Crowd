@@ -196,7 +196,7 @@ The following figure is an examplary output of the trained network, with the Flo
 
 |Original | Density Map(MCNN) |
 | --- | --- |
-| <img src="results/images/IMG_100.jpg" width="300"> | <img src="results/density_maps/output_beach.png" width="300"> |
+| <img src="results/images/IMG_100.jpg" width="400"> | <img src="results/density_maps/output_beach.png" width="400"> |
   
 ## Results
 
