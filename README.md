@@ -2,8 +2,19 @@
 
 ## Introduction
 
-With the ongoing pandemic, counting the number of people in a given camera picture as well as understanding the distribution of the crowd can be extremely helpful in controlling the spread of the COVID-19 virus. For example, large shopping malls could use the crowd density to control the traffic entering the facilities. We, therefore, would like to employ our knowledge and skills in machine learning to implement some crowd analyzing algorithms. 
+With the ongoing pandemic, counting the number of people in a given camera picture as well as understanding the distribution of the crowd can be extremely helpful in controlling the spread of the COVID-19 virus. For example, when surveillance cameras detect large crowds on beach, where social distancing cannot be maintained, police department could be warned and advised to take action. We, therefore, would like to employ our knowledge and skills in machine learning to implement some crowd analyzing algorithms. 
 Previous works have investigated using supervised learning and unsupervised learning to analyze crowd properties [1,2]. We are especially interested in crowd detection and crowd counting: the first aims to differentiate the crowd from background noises in a surveillance picture, while the latter tries to count the number of people in a crowd. Crowd detection often uses unsupervised learning algorithms to perform binary classification [3], while the crowd counting normally takes the form of supervised learning using Convolutional Neural Networks (CNNs) [4]. We would like to investigate how similar the crowd density produced by the two types of algorithms are.
+
+## Data
+In this project, we used the ShanghaiTech dataset, which is a large-scale crowd data set with nearly 800 images with around 330,000 accurately labeled heads. 
+This data set consists of two parts: Part A and Part B. Part_A are images from surveillance cameras randomly crawled from the internet, while Part B are taken from busy streets of metropolitan areas in Shanghai.
+These images are manually labeled by [4] and can be found [here](https://www.kaggle.com/tthien/shanghaitech).
+
+We mainly used Part A to train and test our algorithms, since it contains mainly surveillance images, which aligns perfectly with the potential application (to surveillance cameras) of our algorithms. 
+Part A is divided into train and test sets. According to the conventional 90% train 10% test split, the training set contains 300 images and their ground truth labels, while the test set contains 30 images and their labels.
+The labels in Part A are preprocessed using MATLAB to generate the ground truth density maps. 
+The preprocessed data set used in this project can be downloaded from OneDrive [here](https://gtvault-my.sharepoint.com/:f:/g/personal/yguan44_gatech_edu/Eu3sBKiqEGhHnPCH_07KV90BwPqnUZBIVcDJB7YlADD1zQ?e=bRtCl1).
+
 
 ## Method
 
@@ -13,16 +24,16 @@ The crowd detection analyzes the crowd distribution in a scene. A binary classif
 <img src="https://render.githubusercontent.com/render/math?math=f_{u,v} = \begin{pmatrix}f_{u,v}^{1,r_1}\\...\\f_{u,v}^{1,r_m}\\f_{u,v}^{2,r_1}\\...\\f_{u,v}^{2,r_m}\\f_{u,v}^{3,r_1}\\...\\f_{u,v}^{3,r_m}\end{pmatrix}"> 
 Then pixels are labeled as crowd or background using K-means clustering.
 
-We use the following picture of a Florida beach during the pandemic as an example to demonstrate the feature extraction.
+We use the following picture of a Florida beach [5] during the pandemic as an example to demonstrate the feature extraction.
 <p align="center">
-  <img src="results/images/IMG_100.jpg" width="400">
+  <img src="results/images/IMG_100.jpg" width="400" \>
 </p>
 
 
 We first convert the rbg image to the HSV color space. 
 <p align="center">
-    <img src="results/HSV_example.png" width="900">
-</p>
+    <img src="results/HSV_example.png" width="900" \>
+<p>
 
 ### Laplacian of Gaussian
 We use a custom LoG filter on the HSV image. Define the hue, satuaration and value image to be <img src="https://render.githubusercontent.com/render/math?math=I_h(u,v), I_s(u,v), I_v(u,v)">. Since <img src="https://render.githubusercontent.com/render/math?math=I_h"> has units in radian, we convert the angle value to complex number: <img src="https://render.githubusercontent.com/render/math?math=\tilde{I}_h(u,v) = exp(i \cdot I_h(u,v))">
@@ -85,7 +96,7 @@ def extract_feat1(Ih, Is, r):
 We present a sample output after the LoG feature extraction.
 <p align="center">
 <img src="results/feature 1.png" width="900" alt>
-</p>
+<p>
 
 ### Entropy
 Given the hue, satuaration and value image <img src="https://render.githubusercontent.com/render/math?math=I_h(u,v), I_s(u,v), I_v(u,v)">, 
@@ -134,9 +145,7 @@ def extract_feat2(Is, Ih, r, N=3):
 We present a sample output after the Entropy feature extraction below.
 <p align="center">
 <img src="results/feature 2.png" width="900" alt>
-</p>
-
-
+<p>
 ### HOG
 ### There are 4 steps of HOG implementation, including:
 1. Preprocessing <br/>
@@ -158,7 +167,7 @@ def extract_feat3(Iv,r):
 ```
 <p align="center">
 <img align="center" src="results/feature3.png" width="900" alt>
-</p>
+<p>
   
 ### Crowd counting (Supervised learning)
 Traditional crowd counting algorithms performs poorly when perspective distoritions occur.
@@ -166,7 +175,7 @@ The recent multi-column convolutional neural network (MCNN) aims to address the 
 We implemented one of those MCNN algorithms as in [4], whose multi-resolution and multi-column structure is shown in Figure 4. 
 <p align="center">
 <img src="results/Structure.png" width="800" alt>
-</p>
+<p>
 
 For this MCNN, the input is the image and its output is a crowd density map, whose integral gives the overall crowd count. 
 Different columns of this MCNN corresponds to filters with receptive fields of different sizes, so that the features learnt by each column CNN is adaptive to large variation in people/head size due to perspective effects. 
@@ -180,7 +189,7 @@ With the limited computation resource, we reduced the architecture to 3 columns 
 The following figure presents the training curves of the MCNN algorithm after 2000 episodes. One can observe the significant reduction in loss and mean errors.
 <p align="center">
 <img src="results/Training Curves.png" width="700" alt>
-</p>
+<p>
 
 
 |Original | Ground Truth | Density Map(MCNN) | Crowd Detection(K-means) | Clustering(K-means)  |
@@ -205,3 +214,5 @@ In this project, we have implemented unsupervised learning and supervised learni
 [3] A. Fagette, N. Courty, D. Racoceanu, and J.-Y. Dufour,  “Unsupervised dense    crowd    detection    by    multiscale    texture    analysis,” Pattern Recognition Letters, vol. 44, pp. 126 – 133, 2014, pattern Recognition and   Crowd   Analysis. 
 
 [4] Y. Zhang, D. Zhou, S. Chen, S. Gao, and Y. Ma, "Single-image crowd counting via multi-column convolutional neural network," In Proceedings of the IEEE conference on computer vision and pattern recognition, pp. 589-597. 2016.
+
+[5]
