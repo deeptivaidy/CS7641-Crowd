@@ -166,7 +166,7 @@ The recent multi-column convolutional neural network (MCNN) aims to address the 
 We implemented one of those MCNN algorithms as in [4], whose multi-resolution and multi-column structure is shown in Figure 4. 
 <p align="center">
 <img src="results/Structure.png" width="800" alt>
-<p>
+</p>
 
 For this MCNN, the input is the image and its output is a crowd density map, whose integral gives the overall crowd count. 
 Different columns of this MCNN corresponds to filters with receptive fields of different sizes, so that the features learnt by each column CNN is adaptive to large variation in people/head size due to perspective effects. 
