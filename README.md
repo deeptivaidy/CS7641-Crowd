@@ -22,7 +22,7 @@ We use the following picture of a Florida beach during the pandemic as an exampl
 We first convert the rbg image to the HSV color space. 
 <p align="center">
     <img src="results/HSV_example.png" width="900">
-<p>
+</p>
 
 ### Laplacian of Gaussian
 We use a custom LoG filter on the HSV image. Define the hue, satuaration and value image to be <img src="https://render.githubusercontent.com/render/math?math=I_h(u,v), I_s(u,v), I_v(u,v)">. Since <img src="https://render.githubusercontent.com/render/math?math=I_h"> has units in radian, we convert the angle value to complex number: <img src="https://render.githubusercontent.com/render/math?math=\tilde{I}_h(u,v) = exp(i \cdot I_h(u,v))">
@@ -85,7 +85,7 @@ def extract_feat1(Ih, Is, r):
 We present a sample output after the LoG feature extraction.
 <p align="center">
 <img src="results/feature 1.png" width="900" alt>
-<p>
+</p>
 
 ### Entropy
 Given the hue, satuaration and value image <img src="https://render.githubusercontent.com/render/math?math=I_h(u,v), I_s(u,v), I_v(u,v)">, 
