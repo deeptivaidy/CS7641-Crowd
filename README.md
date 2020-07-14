@@ -93,7 +93,7 @@ def extract_feat1(Ih, Is, r):
     
     return feat
 ```
-We present a sample output after the LoG feature extraction with a resolution <img src="https://render.githubusercontent.com/render/math?math=r =2">.
+We present a sample output after the LoG feature extraction with a resolution <img src="https://render.githubusercontent.com/render/math?math=r=2">.
 <p align="center">
 <img src="results/feature 1.png" width="900" alt>
 <p>
