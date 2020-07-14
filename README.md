@@ -47,7 +47,7 @@ We use a custom LoG filter on the HSV image. Define the hue, satuaration and val
 
 <img src="https://render.githubusercontent.com/render/math?math=LoG(u,v) = \sum_{U=u-r_j}^{u%2Br_j} \sum_{V=v-r_j}^{v%2Br_j} \Delta_{arg((G_{\sigma_1}*\tilde{I}_h)(U,V))}^{arg((G_{\sigma_1}*\tilde{I}_h)(u,v))} \cdot (I_s(u,v)\cdot I_s(U,V))^\alpha">
 
-where <img src="https://render.githubusercontent.com/render/math?math=\Delta_{\theta_1}^{\theta_2} = (\theta_2-\theta_1 %2B \pi) mod(2\pi)-\pi">
+where <img src="https://render.githubusercontent.com/render/math?math=\Delta_{\theta_1}^{\theta_2} = (\theta_2-\theta_1 %2B \pi) mod(2\pi)-\pi">, and <img src="https://render.githubusercontent.com/render/math?math=\sigma_j=r_j/3">, <img src="https://render.githubusercontent.com/render/math?math=\sigma_1=1/3">
 
 ``` python
 def rad2complex(I):
