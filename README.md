@@ -4,14 +4,14 @@
 
 ## Introduction
 
-With the ongoing pandemic, counting the number of people in a given camera picture as well as understanding the distribution of the crowd can be extremely helpful in controlling the spread of the COVID-19 virus. For example, when surveillance cameras detect large crowds on beaches, where social distancing cannot be maintained, the police department could be warned and advised to take action. We, therefore, would like to employ our knowledge and skills in machine learning to implement some crowd analyzing algorithms. 
+With the ongoing pandemic, counting the number of people in a given camera picture as well as understanding the distribution of the crowd can be extremely helpful in controlling the spread of the COVID-19 virus. For example, when surveillance cameras detect large crowds on beach, where social distancing cannot be maintained, the police department could be warned and advised to take action. We, therefore, would like to employ our knowledge and skills in machine learning to implement some crowd analyzing algorithms. 
 
 Previous works have investigated using supervised learning and unsupervised learning to analyze crowd properties [1,2]. We are especially interested in crowd detection and crowd counting: the first aims to differentiate the crowd from background noises in a surveillance picture, while the latter tries to count the number of people in a crowd. Crowd detection often uses unsupervised learning algorithms to perform binary classification [3], while the crowd counting normally takes the form of supervised learning using Convolutional Neural Networks (CNNs) [4]. We would like to investigate how similar the crowd density produced by the two types of algorithms are. By showing the effectiveness of supervised and unsupervised methods, we propose that novel algorithms for crowd analysis can be developed by jointly using both methods.
 
 
 ## Data
-In this project, we used the ShanghaiTech dataset, a large-scale crowd data set with nearly 800 images with around 330,000 accurately labeled heads. 
-This data set consists of two parts: Part A and Part B. Part_A contains images from surveillance cameras randomly crawled from the internet, while images in Part B are taken from busy streets of metropolitan areas in Shanghai.
+In this project, we used the ShanghaiTech dataset, which is a large-scale crowd data set with nearly 800 images with around 330,000 accurately labeled heads. 
+This data set consists of two parts: Part A and Part B. Part_A are images from surveillance cameras randomly crawled from the internet, while Part B are taken from busy streets of metropolitan areas in Shanghai.
 These images are manually labeled by [4] and can be found [here](https://www.kaggle.com/tthien/shanghaitech).
 
 We mainly used Part A to train and test our algorithms, since it contains mainly surveillance images, which aligns perfectly with the potential application (to surveillance cameras) of our algorithms. 
@@ -38,10 +38,10 @@ We first convert the image from the RGB color space to the HSV color space.
 <p align="center">
     <img src="results/HSV_example.png" width="900">
 </p>
-HSV model(Hue, Saturation and Volume) is much more close to human's perception experience compared to RGB model. When doing CV(computer vision) or image processing jobs, HSV  model is much more popular.
+HSV model(Hue, Saturation and Volume) is much more close to human's perception experience comparing to RGB model. When doing CV(computer vision) or image processing jobs, HSV  model is much more popular.
 
 ### Laplacian of Gaussian (LoG)
-We use a custom LoG filter on the HSV image. Define the hue, saturation and value image to be <img src="https://render.githubusercontent.com/render/math?math=I_h(u,v), I_s(u,v), I_v(u,v)">. Since <img src="https://render.githubusercontent.com/render/math?math=I_h"> has units in radian, we convert the angle value to complex number: <img src="https://render.githubusercontent.com/render/math?math=\tilde{I}_h(u,v) = exp(i \cdot I_h(u,v))">
+We use a custom LoG filter on the HSV image. Define the hue, satuaration and value image to be <img src="https://render.githubusercontent.com/render/math?math=I_h(u,v), I_s(u,v), I_v(u,v)">. Since <img src="https://render.githubusercontent.com/render/math?math=I_h"> has units in radian, we convert the angle value to complex number: <img src="https://render.githubusercontent.com/render/math?math=\tilde{I}_h(u,v) = exp(i \cdot I_h(u,v))">
 
 <img src="https://render.githubusercontent.com/render/math?math=f_{u,v}^{1,r_j} = (G_{\sigma_j}*LoG)(u,v)">
 
@@ -98,7 +98,7 @@ def extract_feat1(Ih, Is, r):
     
     return feat
 ```
-We present a sample output after the LoG feature extraction with a resolution <img src="https://render.githubusercontent.com/render/math?math=r=2">.The LoG filter is usually used to extract edges, and we can see this effect from our example.
+We present a sample output after the LoG feature extraction with a resolution <img src="https://render.githubusercontent.com/render/math?math=r=2">.The LoG filter is usually used to extract edges, and we can see from our example its effect.
 <p align="center">
 <img src="results/feature 1.png" width="900" alt>
 </p>
@@ -192,12 +192,6 @@ We implemented a MCNN containing three columns of covolutional neural networks w
 The MCNN algorithm was originally implemented in Python 2.7. We updated the code and implemented the algorithm in Python 3.7 using PyTorch.
 With the limited computation resource, we reduced the architecture to 3 columns and trained the network using the ShanghaiTech data set A for 2000 episodes.
 
-The following figure is an examplary output of the trained network, with the Florida Beach picture as the input.
-
-|Original | Density Map(MCNN) |
-| --- | --- |
-| <img src="results/images/IMG_100.jpg" width="400"> | <img src="results/density_maps/output_beach.png" width="400"> |
-  
 ## Results
 
 The following figure presents the training curves of the MCNN algorithm after 2000 episodes. One can observe the significant reduction in loss and mean errors.
@@ -212,7 +206,9 @@ We applied our algorithm to the following two camera pictures taken during the p
 | <img src="results/images/IMG_100.jpg" width="300"> | <img src="results/density_maps/output_beach.png" width="300"> |<img src="results/k-means/no_border_IMG_100_kmeans_r=[1 2].jpg" width="300">| <img src="results/k-means/K-means(hsv)/IMG_100_kmeans(hsv).jpg" width="300"> |
 | <img src="results/images/IMG_101.jpg" width="300"> | <img src="results/density_maps/output_pool.png" width="300"> |<img src="results/k-means/no_border_IMG_101_kmeans_r=[1 2].jpg" width="300"> | <img src="results/k-means/K-means(hsv)/IMG_101_kmeans(hsv).jpg" width="300"> |
 
-The following are couple examplary outputs of images in the ShanghaiTech data set. 
+The above images are collected from news photos. As a result of that, there is no available ground truth. Hence we only list density map produced by MCNN and crowd distrition generated from k-means. The last column is added as a baseline showing k-means clustering algorithm directly applied to HSV image.
+
+The following are couple examplary outputs of images in the ShanghaiTech dataset. The ground truth is provided by this dataset and used as labeled training data.
 
 |Original | Ground Truth | Density Map(MCNN) | Crowd Detection(K-means) | Clustering(K-means)  |
 | --- | --- | --- | --- | --- | 
@@ -225,9 +221,9 @@ The following are couple examplary outputs of images in the ShanghaiTech data se
 | <img src="results/images/IMG_19.jpg" width="250"> | <img src="results/density_maps/gt_IMG_19.png" width="250"> |<img src="results/density_maps/output_IMG_19.png" width="250"> | <img src="results/k-means/no_border_IMG_19_kmeans_r=[1 2].jpg" width="250"> | <img src="results/k-means/K-means(hsv)/IMG_19_kmeans(hsv).jpg" width="250"> |
 
 ### Discussion
-For the unsupervised learning portion, there are several hyperparameters of the algorithm. The window size <img src="https://render.githubusercontent.com/render/math?math=r"> is the reception field when extracting the three features. Based on [3], the authors propose using a range of <img src="https://render.githubusercontent.com/render/math?math=r"> from 1 to 50 with a gap of 10. This is supposed to capture the texture information on different scales so that our algorithm can detect crowd with multiple resolutions. In our implementation, we realized that using a large window size severely increases time complexity. Therefore, we have chosen to use window sizes of 1 and 2 in our implementation. The <img src="https://render.githubusercontent.com/render/math?math=\alpha"> and <img src="https://render.githubusercontent.com/render/math?math=\beta"> are both chosen as 0.25 as suggested by [3].
+For the unsupervised learning portion, there are several hyperparameter of the algorithm. The window size <img src="https://render.githubusercontent.com/render/math?math=r"> is the reception field when extracting the three features. Based on [3], the authors propose using a range of <img src="https://render.githubusercontent.com/render/math?math=r"> from 1 to 50 with gap of 10. This is supposed to capture the texture information on different scales so that our algorithm can detect crowd with multiple resolutions. In our implementation, we realized that using a large window size severely increases time complexity. Therefore, we have chosen to use window size of 1 and 2 in our implementation. The <img src="https://render.githubusercontent.com/render/math?math=\alpha"> and <img src="https://render.githubusercontent.com/render/math?math=\beta"> are both chosen as 0.25 as suggested by [3].
 
-The images shown in the table above show comparable results between supervised and unsupervised learning methods. As for the unsupervised learning, it is very good at detecting very dense crowd but not very good at large human figures. Also, sometimes it can misclassify background that has a similar texture to crowd. This is an inherent disadvantage of the unsupervised learning method because it utilizes texture information with no capability of understanding objects and non-linear relationships between features. The last column acts as a baseline showing k-means clustering algorithm directly applied to HSV image. It only works if the texture shows a significant difference. But in most cases, it fails to distinguish between the crowd and the background. By comparing these results with our outputs, we can clearly see that the features we extracted are more effective in detecting crowd than the raw HSV features only capturing high contrast and color changes.
+The images in the table above show comparable results between supervised and unsupervised learning methods. As for the unsupervised learning, it is very good at detecting very dense crowd but not very good at large human figures. Also, sometimes it can misclassify background that has similar texture to crowd. This is an inherent disadvantage of the unsupervised learning method because it utilizes texture information with no capability of understanding objects and non-linear relationships bwteen features. The last column acts as a baseline showing k-means clustering algorithm directly applied to HSV image. It only works if the texture shows significant difference. But in most cases, it fails to distinguish between the crowd and the background. By comparing these results with our outputs, we can clearly see that the features we extracted are more effective in detecting crowd than the raw HSV features only capturing high contrast and color changes.
 
 ## Conclusion
 
