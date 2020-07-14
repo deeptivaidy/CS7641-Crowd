@@ -19,7 +19,7 @@ The preprocessed data set used in this project can be downloaded from OneDrive [
 ## Method
 
 ### Crowd dectection (Unsupervised learning)
-The crowd detection analyzes the crowd distribution in a scene. A binary classification is conducted to differentiate the crowds from background noises in the picture, such as trees and buildings. The algorithm contains two modules as in [3]: feature extraction and unsupervised classification. We extract the feature vector at each pixel of the image via Laplacian of Gaussian (LoG), the entropy, and the Histogram of Oriented Gradients (HOG) [3]. Different window size r could be used to capture texture features of different scales. Therefore, for each pixel of the original image, we can obtain a feature vector:
+The crowd detection analyzes the crowd distribution in a scene. A binary classification is conducted to differentiate the crowds from background noises in the picture, such as trees and buildings. The algorithm contains two modules as in [3]: feature extraction and unsupervised classification. We extract the feature vector at each pixel of the image via Laplacian of Gaussian (LoG), the entropy, and the Histogram of Oriented Gradients (HOG) [3]. Different window size <img src="https://render.githubusercontent.com/render/math?math=r"> could be used to capture texture features of different scales. Therefore, for each pixel of the original image, we can obtain a feature vector:
 
 <img src="https://render.githubusercontent.com/render/math?math=f_{u,v} = \begin{pmatrix}f_{u,v}^{1,r_1}\\...\\f_{u,v}^{1,r_m}\\f_{u,v}^{2,r_1}\\...\\f_{u,v}^{2,r_m}\\f_{u,v}^{3,r_1}\\...\\f_{u,v}^{3,r_m}\end{pmatrix}"> 
 Then pixels are labeled as crowd or background using K-means clustering.
@@ -35,7 +35,7 @@ We first convert the image from the RGB color space to the HSV color space.
     <img src="results/HSV_example.png" width="900" \>
 <p>
 
-### Laplacian of Gaussian
+### Laplacian of Gaussian (LoG)
 We use a custom LoG filter on the HSV image. Define the hue, satuaration and value image to be <img src="https://render.githubusercontent.com/render/math?math=I_h(u,v), I_s(u,v), I_v(u,v)">. Since <img src="https://render.githubusercontent.com/render/math?math=I_h"> has units in radian, we convert the angle value to complex number: <img src="https://render.githubusercontent.com/render/math?math=\tilde{I}_h(u,v) = exp(i \cdot I_h(u,v))">
 
 <img src="https://render.githubusercontent.com/render/math?math=f_{u,v}^{1,r_j} = (G_{\sigma_j}*LoG)(u,v)">
@@ -93,7 +93,7 @@ def extract_feat1(Ih, Is, r):
     
     return feat
 ```
-We present a sample output after the LoG feature extraction.
+We present a sample output after the LoG feature extraction with a resolution <img src="https://render.githubusercontent.com/render/math?math=r =2">.
 <p align="center">
 <img src="results/feature 1.png" width="900" alt>
 <p>
@@ -142,12 +142,12 @@ def extract_feat2(Is, Ih, r, N=3):
 
     return feat
 ```
-We present a sample output after the Entropy feature extraction below.
+We present a sample output after the Entropy feature extraction below with a resolution <img src="https://render.githubusercontent.com/render/math?math=r =2">..
 <p align="center">
 <img src="results/feature 2.png" width="900" alt>
 <p>
-### HOG
-### There are 4 steps of HOG implementation, including:
+### Histogram of Gradients (HoG)
+There are 4 steps of HoG implementation, including:
 1. Preprocessing <br/>
    Transfer the target picture to spesific size such as: 100×200, 128×256, or 1000×2000.
 1. Calculate the Gradient Images <br/>
@@ -155,6 +155,7 @@ We present a sample output after the Entropy feature extraction below.
 1. Calculate Histogram of gradients in 16×16 cells. 
 1. 16×16 Block Normalization <br/>
    Normalize the histogram so they are not affected by lighting variations.
+  
 ``` python
 def extract_feat3(Iv,r):
     #we change the pixel per cell from 1*1 to 16*16 based on Dalal and triggs
@@ -165,6 +166,7 @@ def extract_feat3(Iv,r):
     res = ndimage.gaussian_filter(hog_image,sigma=r/3)
     return res
 ```
+The following image presents the sample output of HoG with a resolution <img src="https://render.githubusercontent.com/render/math?math=r =2">.
 <p align="center">
 <img align="center" src="results/feature3.png" width="900" alt>
 <p>
