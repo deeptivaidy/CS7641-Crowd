@@ -178,7 +178,7 @@ With the limited computation resource, we reduced the architecture to 3 columns 
 The following figure presents the training curves of the MCNN algorithm after 2000 episodes. One can observe the significant reduction in loss and mean errors.
 <p align="center">
 <img src="results/Training Curves.png" width="700" alt>
-<p>
+</p>
 
 
 |Original | Ground Truth | Density Map(MCNN) | Crowd Detection(K-means) | Clustering(K-means)  |
