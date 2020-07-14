@@ -4,14 +4,14 @@
 
 ## Introduction
 
-With the ongoing pandemic, counting the number of people in a given camera picture as well as understanding the distribution of the crowd can be extremely helpful in controlling the spread of the COVID-19 virus. For example, when surveillance cameras detect large crowds on beach, where social distancing cannot be maintained, the police department could be warned and advised to take action. We, therefore, would like to employ our knowledge and skills in machine learning to implement some crowd analyzing algorithms. 
+With the ongoing pandemic, counting the number of people in a given camera picture as well as understanding the distribution of the crowd can be extremely helpful in controlling the spread of the COVID-19 virus. For example, when surveillance cameras detect large crowds on beaches, where social distancing cannot be maintained, the police department could be warned and advised to take action. We, therefore, would like to employ our knowledge and skills in machine learning to implement some crowd analyzing algorithms. 
 
 Previous works have investigated using supervised learning and unsupervised learning to analyze crowd properties [1,2]. We are especially interested in crowd detection and crowd counting: the first aims to differentiate the crowd from background noises in a surveillance picture, while the latter tries to count the number of people in a crowd. Crowd detection often uses unsupervised learning algorithms to perform binary classification [3], while the crowd counting normally takes the form of supervised learning using Convolutional Neural Networks (CNNs) [4]. We would like to investigate how similar the crowd density produced by the two types of algorithms are. By showing the effectiveness of supervised and unsupervised methods, we propose that novel algorithms for crowd analysis can be developed by jointly using both methods.
 
 
 ## Data
-In this project, we used the ShanghaiTech dataset, which is a large-scale crowd data set with nearly 800 images with around 330,000 accurately labeled heads. 
-This data set consists of two parts: Part A and Part B. Part_A are images from surveillance cameras randomly crawled from the internet, while Part B are taken from busy streets of metropolitan areas in Shanghai.
+In this project, we used the ShanghaiTech dataset, a large-scale crowd data set with nearly 800 images with around 330,000 accurately labeled heads. 
+This data set consists of two parts: Part A and Part B. Part_A contains images from surveillance cameras randomly crawled from the internet, while images in Part B are taken from busy streets of metropolitan areas in Shanghai.
 These images are manually labeled by [4] and can be found [here](https://www.kaggle.com/tthien/shanghaitech).
 
 We mainly used Part A to train and test our algorithms, since it contains mainly surveillance images, which aligns perfectly with the potential application (to surveillance cameras) of our algorithms. 
