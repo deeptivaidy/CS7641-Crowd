@@ -14,7 +14,7 @@ The crowd detection analyzes the crowd distribution in a scene. A binary classif
 Then pixels are labeled as crowd or background using K-means clustering.
 
 We use the following picture of a Florida beach during the pandemic as an example to demonstrate the feature extraction.
-
+<p align="center">
   <img src="results/images/IMG_100.jpg" width="700" \>
 </p>
 
@@ -83,9 +83,9 @@ def extract_feat1(Ih, Is, r):
     return feat
 ```
 We present a sample output after the LoG feature extraction.
-
-<img align="center" src="results/feature 1.png" width="900" alt>
-
+<p align="center">
+<img src="results/feature 1.png" width="900" alt>
+<p>
 
 ### Entropy
 Given the hue, satuaration and value image <img src="https://render.githubusercontent.com/render/math?math=I_h(u,v), I_s(u,v), I_v(u,v)">, 
@@ -132,9 +132,9 @@ def extract_feat2(Is, Ih, r, N=3):
     return feat
 ```
 We present a sample output after the Entropy feature extraction below.
-
-<img align="center" src="results/feature 2.png" width="900" alt>
-
+<p align="center">
+<img src="results/feature 2.png" width="900" alt>
+<p>
 ### HOG
 ### There are 4 steps of HOG implementation, including:
 1. Preprocessing <br/>
@@ -154,15 +154,17 @@ def extract_feat3(Iv,r):
     res = ndimage.gaussian_filter(hog_image,sigma=r/3)
     return res
 ```
+<p align="center">
 <img align="center" src="results/feature3.png" width="900" alt>
-
+<p>
+  
 ### Crowd counting (Supervised learning)
 Traditional crowd counting algorithms performs poorly when perspective distoritions occur.
 The recent multi-column convolutional neural network (MCNN) aims to address the perspective distortions via the multi-column architecture. 
 We implemented one of those MCNN algorithms as in [4], whose multi-resolution and multi-column structure is shown in Figure 4. 
-
-<img align="center" src="results/Structure.png" width="700" alt>
-
+<p align="center">
+<img src="results/Structure.png" width="800" alt>
+<p>
 
 For this MCNN, the input is the image and its output is a crowd density map, whose integral gives the overall crowd count. 
 Different columns of this MCNN corresponds to filters with receptive fields of different sizes, so that the features learnt by each column CNN is adaptive to large variation in people/head size due to perspective effects. 
@@ -174,8 +176,9 @@ With the limited computation resource, we reduced the architecture to 3 columns 
 ## Results
 
 The following figure presents the training curves of the MCNN algorithm after 2000 episodes. One can observe the significant reduction in loss and mean errors.
-<img align="center" src="results/Training Curves.png" width="700" alt>
-
+<p align="center">
+<img src="results/Training Curves.png" width="700" alt>
+<p>
 
 
 |Original | Ground Truth | Density Map(MCNN) | Crowd Detection(K-means) | Clustering(K-means)  |
