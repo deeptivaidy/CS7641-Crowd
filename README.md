@@ -13,9 +13,9 @@ The crowd detection analyzes the crowd distribution in a scene. A binary classif
 <img src="https://render.githubusercontent.com/render/math?math=f_{u,v} = \begin{pmatrix}f_{u,v}^{1,r_1}\\...\\f_{u,v}^{1,r_m}\\f_{u,v}^{2,r_1}\\...\\f_{u,v}^{2,r_m}\\f_{u,v}^{3,r_1}\\...\\f_{u,v}^{3,r_m}\end{pmatrix}"> 
 Then pixels are labeled as crowd or background using K-means clustering.
 
-We use the following picture as an example to demonstrate the feature extraction.
+We use the following picture of a Florida beach during the pandemic as an example to demonstrate the feature extraction.
 
-<img align="center" src="results/input example.jpg" width="700" alt>
+<img align="center" src="results/IMG_100.jpg" width="700" alt>
 
 We first convert the rbg image to the HSV color space. 
 <img align="center" src="results/HSV_example.png" width="700" alt>
