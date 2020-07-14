@@ -35,7 +35,7 @@ We use the following picture of a Florida beach [5] during the pandemic as an ex
 We first convert the image from the RGB color space to the HSV color space. 
 <p align="center">
     <img src="results/HSV_example.png" width="900" \>
-<p>
+</p>
 
 ### Laplacian of Gaussian (LoG)
 We use a custom LoG filter on the HSV image. Define the hue, satuaration and value image to be <img src="https://render.githubusercontent.com/render/math?math=I_h(u,v), I_s(u,v), I_v(u,v)">. Since <img src="https://render.githubusercontent.com/render/math?math=I_h"> has units in radian, we convert the angle value to complex number: <img src="https://render.githubusercontent.com/render/math?math=\tilde{I}_h(u,v) = exp(i \cdot I_h(u,v))">
@@ -98,7 +98,7 @@ def extract_feat1(Ih, Is, r):
 We present a sample output after the LoG feature extraction with a resolution <img src="https://render.githubusercontent.com/render/math?math=r=2">.
 <p align="center">
 <img src="results/feature 1.png" width="900" alt>
-<p>
+</p>
 
 ### Entropy
 Given the hue, satuaration and value image <img src="https://render.githubusercontent.com/render/math?math=I_h(u,v), I_s(u,v), I_v(u,v)">, 
@@ -172,7 +172,7 @@ def extract_feat3(Iv,r):
 The following image presents the sample output of HoG with a resolution <img src="https://render.githubusercontent.com/render/math?math=r =2">.
 <p align="center">
 <img align="center" src="results/feature3.png" width="900" alt>
-<p>
+</p>
   
 ### Crowd counting (Supervised learning)
 Traditional crowd counting algorithms performs poorly when perspective distoritions occur.
@@ -180,7 +180,7 @@ The recent multi-column convolutional neural network (MCNN) aims to address the 
 We implemented one of those MCNN algorithms as in [4], whose multi-resolution and multi-column structure is shown in Figure 4. 
 <p align="center">
 <img src="results/Structure.png" width="800" alt>
-<p>
+</p>
 
 For this MCNN, the input is the image and its output is a crowd density map, whose integral gives the overall crowd count. 
 Different columns of this MCNN corresponds to filters with receptive fields of different sizes, so that the features learnt by each column CNN is adaptive to large variation in people/head size due to perspective effects. 
@@ -194,7 +194,7 @@ With the limited computation resource, we reduced the architecture to 3 columns 
 The following figure presents the training curves of the MCNN algorithm after 2000 episodes. One can observe the significant reduction in loss and mean errors.
 <p align="center">
 <img src="results/Training Curves.png" width="700" alt>
-<p>
+</p>
 
 We applied our algorithm to the following two camera pictures taken during the pandemic. The first is a Florida beach, the second is the infamous "Corona Virus pool party".
 |Original | Density Map(MCNN) | Crowd Detection(K-means) |
@@ -212,6 +212,9 @@ The following are couple examplary outputs of images in the ShanghaiTech data se
 | <img src="results/images/IMG_46.jpg" width="250"> | <img src="results/density_maps/gt_IMG_46.png" width="250"> |<img src="results/density_maps/output_IMG_46.png" width="250"> | <img src="results/k-means/no_border_IMG_46_kmeans_r=[1 2].jpg" width="250"> | <img src="results/k-means/K-means(hsv)/IMG_46_kmeans(hsv).jpg" width="250"> |
 | <img src="results/images/IMG_42.jpg" width="250"> | <img src="results/density_maps/gt_IMG_42.png" width="250"> |<img src="results/density_maps/output_IMG_42.png" width="250"> | <img src="results/k-means/no_border_IMG_42_kmeans_r=[1 2].jpg" width="250"> | <img src="results/k-means/K-means(hsv)/IMG_42_kmeans(hsv).jpg" width="250"> |
 | <img src="results/images/IMG_19.jpg" width="250"> | <img src="results/density_maps/gt_IMG_19.png" width="250"> |<img src="results/density_maps/output_IMG_19.png" width="250"> | <img src="results/k-means/no_border_IMG_19_kmeans_r=[1 2].jpg" width="250"> | <img src="results/k-means/K-means(hsv)/IMG_19_kmeans(hsv).jpg" width="250"> |
+
+### Discussion
+For the unsupervised learning portion, there are several hyperparameter of the algorithm. The window size r is the reception field when extracting the three features. Based on [3], the authors propose using a range of r from 1 to 50 with gap of 10. This is supposed to capture the texture information on different scales so that our algorithm can detect crowd with multiple resolutions. In our implemention, we realized that using a large window size severely increases time complexity. Therefore, we have chosen to use window size of 1 and 2 in our implementation.
 
 ## Conclusion
 
