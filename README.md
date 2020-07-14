@@ -144,7 +144,7 @@ def extract_feat2(Is, Ih, r, N=3):
 
     return feat
 ```
-We present a sample output after the Entropy feature extraction below with a resolution <img src="https://render.githubusercontent.com/render/math?math=r =2">..
+We present a sample output after the Entropy feature extraction below with a resolution <img src="https://render.githubusercontent.com/render/math?math=r =2">.
 <p align="center">
 <img src="results/feature 2.png" width="900" alt>
 </p>
