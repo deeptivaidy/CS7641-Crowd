@@ -15,11 +15,14 @@ Then pixels are labeled as crowd or background using K-means clustering.
 
 We use the following picture of a Florida beach during the pandemic as an example to demonstrate the feature extraction.
 
-<img align="center" src="results/images/IMG_100.jpg" width="700" alt>
+  <img src="results/images/IMG_100.jpg" width="700" \>
+</p>
+
 
 We first convert the rbg image to the HSV color space. 
-<img align="center" src="results/HSV_example.png" width="700" alt>
-
+<p align="center">
+    <img src="results/HSV_example.png" width="700" \>
+<p>
 
 ### Laplacian of Gaussian
 We use a custom LoG filter on the HSV image. Define the hue, satuaration and value image to be <img src="https://render.githubusercontent.com/render/math?math=I_h(u,v), I_s(u,v), I_v(u,v)">. Since <img src="https://render.githubusercontent.com/render/math?math=I_h"> has units in radian, we convert the angle value to complex number: <img src="https://render.githubusercontent.com/render/math?math=\tilde{I}_h(u,v) = exp(i \cdot I_h(u,v))">
@@ -81,7 +84,7 @@ def extract_feat1(Ih, Is, r):
 ```
 We present a sample output after the LoG feature extraction.
 
-<img align="center" src="results/feature 1.png" width="700" alt>
+<img align="center" src="results/feature 1.png" width="900" alt>
 
 
 ### Entropy
@@ -130,7 +133,7 @@ def extract_feat2(Is, Ih, r, N=3):
 ```
 We present a sample output after the Entropy feature extraction below.
 
-<img align="center" src="results/feature 2.png" width="700" alt>
+<img align="center" src="results/feature 2.png" width="900" alt>
 
 ### HOG
 ### There are 4 steps of HOG implementation, including:
@@ -151,7 +154,7 @@ def extract_feat3(Iv,r):
     res = ndimage.gaussian_filter(hog_image,sigma=r/3)
     return res
 ```
-<img align="center" src="results/feature3.png" width="700" alt>
+<img align="center" src="results/feature3.png" width="900" alt>
 
 ### Crowd counting (Supervised learning)
 Traditional crowd counting algorithms performs poorly when perspective distoritions occur.
