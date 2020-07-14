@@ -192,6 +192,11 @@ We implemented a MCNN containing three columns of covolutional neural networks w
 The MCNN algorithm was originally implemented in Python 2.7. We updated the code and implemented the algorithm in Python 3.7 using PyTorch.
 With the limited computation resource, we reduced the architecture to 3 columns and trained the network using the ShanghaiTech data set A for 2000 episodes.
 
+The following figure is an examplary output of the trained network, with the Florida Beach picture as the input.
+|Original | Density Map(MCNN) |
+| --- | --- |
+| <img src="results/images/IMG_100.jpg" width="300"> | <img src="results/density_maps/output_beach.png" width="300"> |
+
 ## Results
 
 The following figure presents the training curves of the MCNN algorithm after 2000 episodes. One can observe the significant reduction in loss and mean errors.
