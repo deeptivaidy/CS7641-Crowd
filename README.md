@@ -194,7 +194,7 @@ The MCNN algorithm was originally implemented in Python 2.7. We updated the code
 With the limited computation resource, we reduced the architecture to 3 columns and trained the network using the ShanghaiTech data set A for 2000 episodes.
 |Original | Density Map(MCNN) |
 | --- | --- |
-| <img src="results/images/IMG_100.jpg" width="300"> | <img src="results/density_maps/output_beach.png" width="300"> |
+| <img src="results/images/IMG_100.jpg" width="400"> | <img src="results/density_maps/output_beach.png" width="400"> |
 
 ## Results
 
