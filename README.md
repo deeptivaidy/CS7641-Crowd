@@ -207,7 +207,7 @@ The following figure presents the training curves of the MCNN algorithm after 20
 
 We applied our algorithm to the following two camera pictures taken during the pandemic. The first is a Florida beach, the second is the infamous "Corona Virus pool party".
 
-|Original | Density Map(MCNN) | Crowd Detection | Direct Clustering(K-means)  |
+|Original | Density Map(MCNN) | Crowd Detection | K-means  |
 | --- | --- | --- | --- |
 | <img src="results/images/IMG_100.jpg" width="300"> | <img src="results/density_maps/output_beach.png" width="300"> |<img src="results/k-means/no_border_IMG_100_kmeans_r=[1 2].jpg" width="300">| <img src="results/k-means/K-means(hsv)/IMG_100_kmeans(hsv).jpg" width="300"> |
 | <img src="results/images/IMG_101.jpg" width="300"> | <img src="results/density_maps/output_pool.png" width="300"> |<img src="results/k-means/no_border_IMG_101_kmeans_r=[1 2].jpg" width="300"> | <img src="results/k-means/K-means(hsv)/IMG_101_kmeans(hsv).jpg" width="300"> |
@@ -216,7 +216,7 @@ The above images are collected from news photos. As a result of that, there is n
 
 The following are couple examplary outputs of images in the ShanghaiTech dataset. The ground truth is provided by this dataset and used as labeled training data.
 
-|Original | Ground Truth | Density Map(MCNN) | Crowd Detection | Direct Clustering(K-means)  |
+|Original | Ground Truth | Density Map(MCNN) | Crowd Detection | K-means  |
 | --- | --- | --- | --- | --- | 
 | <img src="results/images/IMG_66.jpg" width="250"> | <img src="results/density_maps/gt_IMG_66.png" width="250"> |<img src="results/density_maps/output_IMG_66.png" width="250"> | <img src="results/k-means/no_border_IMG_66_kmeans_r=[1 2].jpg" width="250"> | <img src="results/k-means/K-means(hsv)/IMG_66_kmeans(hsv).jpg" width="250"> |
 | <img src="results/images/IMG_14.jpg" width="250"> | <img src="results/density_maps/gt_IMG_14.png" width="250"> |<img src="results/density_maps/output_IMG_14.png" width="250"> | <img src="results/k-means/no_border_IMG_14_kmeans_r=[1 2].jpg" width="250"> | <img src="results/k-means/K-means(hsv)/IMG_14_kmeans(hsv).jpg" width="250"> |
