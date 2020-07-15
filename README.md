@@ -2,6 +2,8 @@
 
 ### Haige Chen, Hanning Chen, Yue Guan, Hengyu Yang, Jingyuan Zhang
 
+Video Link: https://bluejeans.com/s/GJBOzt1wj7s
+
 ## Introduction
 
 With the ongoing pandemic, counting the number of people in a given camera picture as well as understanding the distribution of the crowd can be extremely helpful in controlling the spread of the COVID-19 virus. For example, when surveillance cameras detect large crowds on beach, where social distancing cannot be maintained, the police department could be warned and advised to take action. We, therefore, would like to employ our knowledge and skills in machine learning to implement some crowd analyzing algorithms. 
