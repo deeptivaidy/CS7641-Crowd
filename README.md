@@ -8,6 +8,10 @@ With the ongoing pandemic, counting the number of people in a given camera pictu
 
 Previous works have investigated using supervised learning and unsupervised learning to analyze crowd properties [1,2]. We are especially interested in crowd detection and crowd counting: the first aims to differentiate the crowd from background noises in a surveillance picture, while the latter tries to count the number of people in a crowd. Crowd detection often uses unsupervised learning algorithms to perform binary classification [3], while the crowd counting normally takes the form of supervised learning using Convolutional Neural Networks (CNNs) [4]. We would like to investigate how similar the crowd density produced by the two types of algorithms are. By showing the effectiveness of supervised and unsupervised methods, we propose that novel algorithms for crowd analysis can be developed by jointly using both methods.
 
+<p align="center">
+  <img src="results/images/IMG_100.jpg" width="400">
+</p>
+
 
 ## Data
 In this project, we used the ShanghaiTech dataset, which is a large-scale crowd data set with nearly 800 images with around 330,000 accurately labeled heads. 
@@ -30,9 +34,6 @@ The crowd detection analyzes the crowd distribution in a scene. A binary classif
 Then pixels are labeled as crowd or background using K-means clustering.
 
 We use the following picture of a Florida beach [5] during the pandemic as an example to demonstrate the feature extraction.
-<p align="center">
-  <img src="results/images/IMG_100.jpg" width="400">
-</p>
 
 
 We first convert the image from the RGB color space to the HSV color space.  
