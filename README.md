@@ -26,6 +26,7 @@ The preprocessed data set used in this project can be downloaded from OneDrive [
 The crowd detection analyzes the crowd distribution in a scene. A binary classification is conducted to differentiate the crowds from background noises in the picture, such as trees and buildings. The algorithm contains two modules as in [3]: feature extraction and unsupervised classification. We extract the feature vector at each pixel of the image via Laplacian of Gaussian (LoG), the entropy, and the Histogram of Oriented Gradients (HOG) [3]. Different window size <img src="https://render.githubusercontent.com/render/math?math=r"> could be used to capture texture features of different scales. Therefore, for each pixel of the original image, we can obtain a feature vector:
 
 <img src="https://render.githubusercontent.com/render/math?math=f_{u,v} = \begin{pmatrix}f_{u,v}^{1,r_1}\\...\\f_{u,v}^{1,r_m}\\f_{u,v}^{2,r_1}\\...\\f_{u,v}^{2,r_m}\\f_{u,v}^{3,r_1}\\...\\f_{u,v}^{3,r_m}\end{pmatrix}"> 
+
 Then pixels are labeled as crowd or background using K-means clustering.
 
 We use the following picture of a Florida beach [5] during the pandemic as an example to demonstrate the feature extraction.
